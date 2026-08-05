@@ -32,12 +32,15 @@ The game environment is split into 4 distinct functional zones, alongside an act
 ## 📂 Project Structure
 
 ```text
-├── src/           # Game logic, player movement, rendering loop (.c)
-├── include/       # Module headers and raylib declarations (.h)
-├── lib/           # Static libraries (raylib for Windows/MinGW)
-├── assets/        # Sprites, textures, and UI elements (.png)
-├── Makefile       # Windows build automation script
+.
+├── assets/        # Sprites, textures, fonts, icons, UI assets
+├── include/       # Header files and raylib dependencies
+├── lib/           # raylib libraries (MinGW)
+├── src/           # Game logic and rendering
+├── .gitignore
+├── Makefile
 └── README.md
+```
 
 ---
 
