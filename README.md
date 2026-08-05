@@ -1,4 +1,4 @@
-```markdown
+
 # 🌾 C Farming Simulator — 2D Farming Simulation in C
 
 ![Language](https://img.shields.io/badge/Language-C99-blue.svg)
@@ -38,8 +38,6 @@ The game environment is split into 4 distinct functional zones, alongside an act
 ├── assets/        # Sprites, textures, and UI elements (.png)
 ├── Makefile       # Windows build automation script
 └── README.md
-
-```
 
 ---
 
