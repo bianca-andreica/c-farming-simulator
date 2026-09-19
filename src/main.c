@@ -7,6 +7,7 @@ extern void InitRectangles(void);
 
 int main()
 {
+    SetConfigFlags(FLAG_FULLSCREEN_MODE);
     InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "Farming Game");
     Farmer farmer;
     Animal animals[MAX_ANIMALS];
@@ -18,7 +19,6 @@ int main()
     }
     InitTextures();
     InitRectangles();
-    ToggleFullscreen();
     SetTargetFPS(60);
 
     Texture2D plantZoneBackground = LoadTexture("assets/backgrounds/background_plant.png");

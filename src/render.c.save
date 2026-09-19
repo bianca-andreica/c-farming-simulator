@@ -636,6 +636,8 @@ void InitShopItems(void)
     
         static int QtyEssentials[2] = {1, 1};
 
+        int totalShopItems = 2;
+
         shopItems[0] = (ShopItemUI){foodTexture, "Mancare", 5, &QtyEssentials[0], {0}};
         shopItems[1] = (ShopItemUI){waterTexture, "Apa", 3, &QtyEssentials[1], {0}};
 

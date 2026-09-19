@@ -1,0 +1,351 @@
+WARNING: GLFW: Failed to find selected monitor
+WARNING: GLFW: Failed to find selected monitor
+INFO: Initializing raylib 6.1-dev
+INFO: Platform backend: DESKTOP (GLFW)
+INFO: Supported raylib modules:
+INFO:     > rcore:..... loaded (mandatory)
+INFO:     > rlgl:...... loaded (mandatory)
+INFO:     > rshapes:... loaded (optional)
+INFO:     > rtextures:. loaded (optional)
+INFO:     > rtext:..... loaded (optional)
+INFO:     > rmodels:... loaded (optional)
+INFO:     > raudio:.... loaded (optional)
+INFO: DISPLAY: Device initialized successfully 
+INFO:     > Display size: 1280 x 800
+INFO:     > Screen size:  1280 x 800
+INFO:     > Render size:  1280 x 800
+INFO:     > Viewport offsets: 0, 0
+INFO: GLAD: OpenGL extensions loaded successfully
+INFO: GL: Supported extensions count: 229
+INFO: GL: OpenGL device information:
+INFO:     > Vendor:   Mesa
+INFO:     > Renderer: llvmpipe (LLVM 20.1.2, 256 bits)
+INFO:     > Version:  4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2
+INFO:     > GLSL:     4.50
+INFO: GL: VAO extension detected, VAO functions loaded successfully
+INFO: GL: NPOT textures extension detected, full NPOT textures supported
+INFO: GL: DXT compressed textures supported
+INFO: GL: ETC2/EAC compressed textures supported
+INFO: PLATFORM: DESKTOP (GLFW - X11): Initialized successfully
+INFO: TEXTURE: [ID 1] Texture loaded successfully (1x1 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 1] Default texture loaded successfully
+INFO: SHADER: [ID 1] Vertex shader compiled successfully
+INFO: SHADER: [ID 2] Fragment shader compiled successfully
+INFO: SHADER: [ID 3] Program shader loaded successfully
+INFO: SHADER: [ID 3] Default shader loaded successfully
+INFO: RLGL: Render batch vertex buffers loaded successfully in RAM (CPU)
+INFO: RLGL: Render batch vertex buffers loaded successfully in VRAM (GPU)
+INFO: RLGL: Default OpenGL state initialized successfully
+INFO: TEXTURE: [ID 2] Texture loaded successfully (128x128 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Default font loaded successfully (224 glyphs)
+INFO: SYSTEM: Working Directory: /home/bianca/c-farming-simulator
+INFO: FILEIO: [assets/Fonts/Chewy-Regular.ttf] File loaded successfully
+INFO: TEXTURE: [ID 3] Texture loaded successfully (1024x1024 | GRAY_ALPHA | 1 mipmaps)
+INFO: FONT: Data loaded successfully (128 pixel size | 95 glyphs)
+INFO: FILEIO: [assets/egg.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (258x335 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 4] Texture loaded successfully (32x32 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/wheat.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (168x153 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 5] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+WARNING: FILEIO: [assets/seeds/corn.png] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+INFO: FILEIO: [assets/seeds/carrot.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x153 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 6] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/tomato.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x144 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 7] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/lettuce.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x153 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 8] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/potato.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x144 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 9] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/strawberry.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x144 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 10] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/onion.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x144 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 11] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/cabbage.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (159x144 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 12] Texture loaded successfully (450x450 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/seeds/baby_plant.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (500x500 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 13] Texture loaded successfully (500x500 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/cat_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x279 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 14] Texture loaded successfully (335x279 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/chicken_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 15] Texture loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/cow_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (338x338 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 16] Texture loaded successfully (338x338 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/dog_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (297x297 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 17] Texture loaded successfully (297x297 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/duck_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (354x310 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 18] Texture loaded successfully (354x310 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/horse_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (380x380 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 19] Texture loaded successfully (380x380 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/pig_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 20] Texture loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/rabbit_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 21] Texture loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/sheep_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 22] Texture loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/icons/icon_food.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1024x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 23] Texture loaded successfully (1024x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/icons/icon_energy.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (416x476 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 24] Texture loaded successfully (416x476 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/icons/icon_money.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1024x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 25] Texture loaded successfully (1024x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/icon_arrow_left.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (449x445 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 26] Texture loaded successfully (100x100 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/icon_arrow_right.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (449x445 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 27] Texture loaded successfully (100x100 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/icons/iconFood.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (500x500 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 28] Texture loaded successfully (270x270 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/icons/iconWater.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1024x1024 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 29] Texture loaded successfully (270x270 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/back.png.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (507x571 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 30] Texture loaded successfully (250x250 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/back_stanga.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (507x571 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 31] Texture loaded successfully (250x250 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/arrow_plant_zone.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (867x452 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 32] Texture loaded successfully (150x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/arrow_animal_zone.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (892x522 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 33] Texture loaded successfully (150x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/arrows/arrow_relax_zone.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (892x509 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 34] Texture loaded successfully (150x150 | R8G8B8A8 | 1 mipmaps)
+WARNING: FILEIO: [assets/sell_icon.png] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+WARNING: FILEIO: [assets/collect_icon.png] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+WARNING: FILEIO: [assets/wood_textures.PNG] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+WARNING: FILEIO: [assets/iconFood.png] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+INFO: FILEIO: [assets/icons/icon_shop.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (500x500 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 35] Texture loaded successfully (166x166 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/backgrounds/background_relax.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1536x1024 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 36] Texture loaded successfully (1536x1024 | R8G8B8 | 1 mipmaps)
+WARNING: FILEIO: [assets/textures/wood_textures.PNG] Failed to open file
+Error: Could not load shop background image
+WARNING: IMAGE: Data is not valid to load texture
+Error: Could not create shop background texture
+INFO: FILEIO: [assets/shop/plante/capsuni.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 37] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/dafin.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 38] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/grau.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 39] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/mazare.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (342x312 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 40] Texture loaded successfully (285x260 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/morcov.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 41] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/porumb.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 42] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/spanac.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (331x331 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 43] Texture loaded successfully (275x275 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/telina.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (342x312 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 44] Texture loaded successfully (285x260 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/plante/varza.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (342x312 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 45] Texture loaded successfully (285x260 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/caine.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (321x321 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 46] Texture loaded successfully (267x267 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/cal.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (320x320 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 47] Texture loaded successfully (266x266 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/gaina.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (322x322 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 48] Texture loaded successfully (268x268 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/iepure.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (322x322 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 49] Texture loaded successfully (268x268 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/oaie.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (322x322 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 50] Texture loaded successfully (268x268 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/pisica.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (315x315 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 51] Texture loaded successfully (262x262 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/porc.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (320x320 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 52] Texture loaded successfully (266x266 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/shop/animale/rata.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (322x322 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 53] Texture loaded successfully (268x268 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/plot.PNG] File loaded successfully
+INFO: IMAGE: Data loaded successfully (58x55 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 54] Texture loaded successfully (150x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/water_tower.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (292x597 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 55] Texture loaded successfully (150x200 | R8G8B8A8 | 1 mipmaps)
+WARNING: FILEIO: [assets/tool_storage.png] Failed to open file
+WARNING: IMAGE: Data is not valid to load texture
+INFO: FILEIO: [assets/animal_home/dog_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (297x297 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 56] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/horse_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (380x380 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 57] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/chicken_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 58] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/rabbit_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 59] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/sheep_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (330x330 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 60] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/cat_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x279 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 61] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/pig_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (335x335 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 62] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/duck_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (354x310 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 63] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/animal_home/cow_home.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (338x338 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 64] Texture loaded successfully (200x150 | R8G8B8A8 | 1 mipmaps)
+INFO: TIMER: Target time per frame: 16.667 milliseconds
+INFO: FILEIO: [assets/backgrounds/background_plant.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1280x853 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 65] Texture loaded successfully (1280x853 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/backgrounds/background_animals.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1280x853 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 66] Texture loaded successfully (1280x853 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/backgrounds/background_relax.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1536x1024 | R8G8B8 | 1 mipmaps)
+INFO: TEXTURE: [ID 67] Texture loaded successfully (1536x1024 | R8G8B8 | 1 mipmaps)
+INFO: FILEIO: [assets/backgrounds/backgroung_princip.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (1536x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 68] Texture loaded successfully (1536x1024 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/farmer.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (201x322 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 69] Texture loaded successfully (201x322 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/cow.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (84x96 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 70] Texture loaded successfully (84x96 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/sheep.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (79x95 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 71] Texture loaded successfully (79x95 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/chicken.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (65x104 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 72] Texture loaded successfully (65x104 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/cat.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 73] Texture loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/dog.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 74] Texture loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/duck.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 75] Texture loaded successfully (68x82 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/horse.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (235x240 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 76] Texture loaded successfully (235x240 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/pig.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (76x97 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 77] Texture loaded successfully (76x97 | R8G8B8A8 | 1 mipmaps)
+INFO: FILEIO: [assets/satana.png] File loaded successfully
+INFO: IMAGE: Data loaded successfully (59x90 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 78] Texture loaded successfully (59x90 | R8G8B8A8 | 1 mipmaps)
+INFO: TEXTURE: [ID 69] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 70] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 71] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 72] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 73] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 74] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 75] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 76] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 77] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 78] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 65] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 66] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 67] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 68] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 4] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 5] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 6] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 7] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 8] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 9] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 10] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 11] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 12] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 36] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 23] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 24] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 25] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 32] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 33] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 34] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 35] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 26] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 27] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 46] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 48] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 49] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 50] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 51] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 53] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 52] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 47] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 37] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 38] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 39] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 40] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 41] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 42] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 43] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 44] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 45] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 54] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 55] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 56] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 57] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 58] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 59] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 60] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 61] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 62] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 63] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 64] Unloaded texture data from VRAM (GPU)
+INFO: TEXTURE: [ID 2] Unloaded texture data from VRAM (GPU)
+INFO: SHADER: [ID 3] Default shader unloaded successfully
+INFO: TEXTURE: [ID 1] Default texture unloaded successfully
+INFO: Window closed successfully
