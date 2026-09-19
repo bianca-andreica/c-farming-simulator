@@ -7,8 +7,19 @@ extern void InitRectangles(void);
 
 int main()
 {
+    // 1. Setezi flag-ul de Fullscreen
     SetConfigFlags(FLAG_FULLSCREEN_MODE);
-    InitWindow(GetMonitorWidth(0), GetMonitorHeight(0), "Farming Game");
+    
+    // 2. Deschizi fereastra mai întâi (pui 0, 0 ca să ia automat rezoluția nativă a monitorului)
+    InitWindow(0, 0, "Farming Game");
+    RenderTexture2D gameTarget = LoadRenderTexture(GAME_WIDTH, GAME_HEIGHT);
+    // 3. ACUM măsori dimensiunile! (Fiind deja inițializat, nu va mai da 0 x 0)
+    int monitor = GetCurrentMonitor();
+    int monitorWidth = GetMonitorWidth(monitor);
+    int monitorHeight = GetMonitorHeight(monitor);
+
+    printf("Screen: %d x %d\n", GetScreenWidth(), GetScreenHeight());
+    printf("Monitor %d: %d x %d\n", monitor, monitorWidth, monitorHeight);
     Farmer farmer;
     Animal animals[MAX_ANIMALS];
     LoadGame("savegame.dat", &money, &energy, &foodStock, pens, PEN_COUNT, plots, plotCount);
@@ -58,9 +69,9 @@ int main()
         SaveGame("savegame.dat", money, energy, foodStock, pens, PEN_COUNT, plots, plotCount);
         break; 
         }
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
+        BeginTextureMode(gameTarget);
 
+        ClearBackground(RAYWHITE);
         
         Texture2D currentBackground;
         switch (currentZone)
@@ -89,8 +100,11 @@ int main()
 
 
         UpdateAnimals(deltaTime, animals, animalCount);
-        UpdateEggs(deltaTime);
-        DrawEggs(shopfont);
+        if (currentZone == ZONE_ANIMALS)
+	{
+   		 UpdateEggs(deltaTime);
+    		 DrawEggs(shopfont);
+	}
 
         
         if (currentZone != ZONE_RELAX)
@@ -107,11 +121,10 @@ int main()
         DrawHUD(foodStock, energy, money);
 
     
-        if (CheckCollisionPointRec(GetMousePosition(), shopButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-        {
-            shopOpen = !shopOpen; 
-        }
-
+        if (CheckCollisionPointRec(GetGameMousePosition(), shopButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+	{
+   		 shopOpen = !shopOpen; 
+	}
         bool clickHandled = false;
         DrawShop(&clickHandled,&shopOpen);
         CheckBarnClick(&clickHandled);
@@ -121,7 +134,44 @@ int main()
         {
             DrawInventory(&clickHandled, shopfont);
         }
-        EndDrawing();
+
+        EndTextureMode();
+
+BeginDrawing();
+
+ClearBackground(BLACK);
+
+float scaleX = (float)GetScreenWidth() / GAME_WIDTH;
+float scaleY = (float)GetScreenHeight() / GAME_HEIGHT;
+
+float scale = scaleX < scaleY ? scaleX : scaleY;
+
+float destWidth = GAME_WIDTH * scale;
+float destHeight = GAME_HEIGHT * scale;
+
+float destX = (GetScreenWidth() - destWidth) / 2.0f;
+float destY = (GetScreenHeight() - destHeight) / 2.0f;
+
+DrawTexturePro(
+    gameTarget.texture,
+    (Rectangle){
+        0,
+        0,
+        (float)gameTarget.texture.width,
+        -(float)gameTarget.texture.height
+    },
+    (Rectangle){
+        destX,
+        destY,
+        destWidth,
+        destHeight
+    },
+    (Vector2){0, 0},
+    0.0f,
+    WHITE
+);
+
+EndDrawing();
     }
     UnloadGame(&farmer, plants, plantCount, animals, animalCount);
     UnloadTexture(plantZoneBackground);
@@ -129,6 +179,7 @@ int main()
     UnloadTexture(relaxZoneBackground);
     UnloadTexture(mainZoneBackground);
     UnloadTextures();
+    UnloadRenderTexture(gameTarget);
     CloseWindow();
     return 0;
 }

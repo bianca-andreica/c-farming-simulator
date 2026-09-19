@@ -11,6 +11,11 @@
 #define MAX_EGGS 20
 #define PEN_COUNT ANIMAL_TYPE_COUNT
 
+#define GAME_WIDTH 1920
+#define GAME_HEIGHT 1080
+
+
+Vector2 GetGameMousePosition(void);
 
 typedef enum
 {

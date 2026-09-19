@@ -7,8 +7,6 @@
 #include "raylib.h"
 
 
-#define SCREEN_WIDTH 1920
-#define SCREEN_HEIGHT 1080
 #define MAX_LEVELS 5
 
 int levelThresholds[MAX_LEVELS] = { 50, 150, 300, 500, 800 };
@@ -54,18 +52,36 @@ int penCount = 6;
 bool showNotEnoughEnergyPopup = false;
 float energyPopupTimer = 0.0f;
 
+Vector2 GetGameMousePosition(void)
+{
+    float scaleX = (float)GetScreenWidth() / GAME_WIDTH;
+    float scaleY = (float)GetScreenHeight() / GAME_HEIGHT;
+
+    float scale = scaleX < scaleY ? scaleX : scaleY;
+
+    float offsetX = (GetScreenWidth() - GAME_WIDTH * scale) / 2.0f;
+    float offsetY = (GetScreenHeight() - GAME_HEIGHT * scale) / 2.0f;
+
+    Vector2 mouse = GetMousePosition();
+
+    return (Vector2){
+        (mouse.x - offsetX) / scale,
+        (mouse.y - offsetY) / scale
+    };
+}
 
 void InitRectangles(void)
 {
-    leftArrowRect = (Rectangle){50, GetScreenHeight() / 2 - 25, 150, 150};                      
-    rightArrowRect = (Rectangle){GetScreenWidth() - 250, GetScreenHeight() / 2 - 25, 150, 150}; 
-    upArrowRect = (Rectangle){GetScreenWidth() / 2 - 50, 300, 150, 150};     
-    downArrowRect1 = (Rectangle){GetScreenWidth() / 2 - 25, GetScreenHeight() - 250, 250, 250};  
-    downArrowRect2 = (Rectangle){GetScreenWidth()  - 300, GetScreenHeight()/2, 250, 250};
-    downArrowRect3 = (Rectangle){GetScreenWidth() -1900, GetScreenHeight()/2, 250, 250};
+    leftArrowRect = (Rectangle){50, GAME_HEIGHT / 2 - 25, 150, 150};
+    rightArrowRect = (Rectangle){GAME_WIDTH - 250, GAME_HEIGHT / 2 - 25, 150, 150};
+    upArrowRect = (Rectangle){GAME_WIDTH / 2 - 50, 300, 150, 150};
+    downArrowRect1 = (Rectangle){GAME_WIDTH / 2 - 25, GAME_HEIGHT - 250, 250, 250};
+    downArrowRect2 = (Rectangle){GAME_WIDTH - 300, GAME_HEIGHT / 2, 250, 250};
+    downArrowRect3 = (Rectangle){GAME_WIDTH - 1900, GAME_HEIGHT / 2, 250, 250};
 
-    shopButtonRect = (Rectangle){SCREEN_WIDTH - 170, 900, 150, 150};
+    shopButtonRect = (Rectangle){GAME_WIDTH - 170, 900, 150, 150};
 }
+
 
 void InitGame(Farmer *farmer, Plant plants[], int *plantCount, Animal animals[], int *animalCount)
 {
@@ -116,7 +132,7 @@ void InitPlots(Plot plots[])
     const float spacing = 70;
 
     float totalWidth = columns * plotSize + (columns - 1) * spacing;
-    float startX = (GetScreenWidth() - totalWidth) / 2;
+    float startX = (GAME_WIDTH - totalWidth) / 2;
     float startY = 500;
 
     int index = 0;
@@ -181,7 +197,7 @@ void HandlePlotPlanting(Plot plots[], int plotCount)
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
-        Vector2 mouse = GetMousePosition();
+        Vector2 mouse = GetGameMousePosition();
         for (int i = 0; i < plotCount; i++)
         {
             if (CheckCollisionPointRec(mouse, plots[i].bounds))
@@ -249,7 +265,7 @@ void UpdateGame(Farmer *farmer, Plant plants[], int *plantCount, Animal animals[
     if (IsKeyDown(KEY_UP))
         farmer->position.y -= 2;
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
 
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
@@ -510,8 +526,6 @@ img = LoadImage("assets/seeds/cabbage.png"); ImageResize(&img, 450, 450); plantT
         printf("Error: Could not create shop icon texture\n");
     }
     UnloadImage(shopIconImage);
-    shopButtonRect = (Rectangle){SCREEN_WIDTH - 1500, 1000, shopIcon.width, shopIcon.height};
-
     relaxZoneTexture = LoadTexture("assets/backgrounds/background_relax.png");
 
     Image shopBackgroundImage = LoadImage("assets/textures/wood_textures.PNG");
@@ -700,8 +714,8 @@ void InitAnimals(Animal animals[])
         animals[i].position = animalPositions[i];
         animals[i].age = 0.0f;
         animals[i].lifespan = 10.0f + GetRandomValue(5, 10); 
-        animals[i].timeUntilHungry = 6.0f; 
-        animals[i].maxTimeUntilHungry = 6.0f;
+        animals[i].timeUntilHungry = 60.0f; 
+        animals[i].maxTimeUntilHungry = 60.0f;
         animals[i].isHungry = false;
         animals[i].eggLayTimer = 12.0f + GetRandomValue(0, 12);
         animals[i].respawnTimer = 0;
@@ -713,7 +727,7 @@ void InitAnimals(Animal animals[])
 
 void UpdateAnimals(float deltaTime, Animal animals[], int animalCount)
 {    
-    float animalDeltaTime = deltaTime * 0.9f; 
+    float animalDeltaTime = deltaTime;
 
     for (int i = 0; i < animalCount; i++)
     {
@@ -771,7 +785,7 @@ void UpdateEggs(float deltaTime)
         {
             eggs[i].freshness -= deltaTime;
 
-            Vector2 mouse = GetMousePosition();
+            Vector2 mouse = GetGameMousePosition();
             Rectangle eggRect = {
                 eggs[i].position.x,
                 eggs[i].position.y,
@@ -970,7 +984,7 @@ void DrawNotEnoughEnergyPopup(Font shopfont)
     DrawRectangleRec(closeButton, (Color){0, 150, 0, 255});
     DrawTextEx(shopfont, "X", (Vector2){1160, 415}, 24, 1, WHITE);
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
     if (CheckCollisionPointRec(mouse, closeButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
         showNotEnoughEnergyPopup = false;
@@ -1000,7 +1014,7 @@ void DrawLevelUpPopup(Font shopfont)
     DrawRectangleRec(closeButton, (Color){200, 0, 0, 255});
     DrawTextEx(shopfont, "X", (Vector2){1210, 395}, 24, 2, WHITE);
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
     if (CheckCollisionPointRec(mouse, closeButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
         showLevelUpPopup = false;
@@ -1014,6 +1028,7 @@ void DrawLevelUpPopup(Font shopfont)
 }
 
 
+
 void DrawNotEnoughWaterPopup(Font shopfont)
 {
     if (!showNotEnoughWaterPopup)
@@ -1025,10 +1040,11 @@ void DrawNotEnoughWaterPopup(Font shopfont)
     DrawTextEx(shopfont, "Nu ai destula apa!", (Vector2){730, 450}, 32, 2, DARKBLUE);
 
     Rectangle closeButton = {1150, 410, 40, 40};
+
     DrawRectangleRec(closeButton, (Color){0, 0, 150, 255});
     DrawTextEx(shopfont, "X", (Vector2){1160, 415}, 24, 1, WHITE);
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
     if (CheckCollisionPointRec(mouse, closeButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
         showNotEnoughWaterPopup = false;

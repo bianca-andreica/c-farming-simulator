@@ -67,7 +67,7 @@ void DrawEggs(Font shopFont)
         {
             DrawTexture(eggs[i].texture, eggs[i].position.x, eggs[i].position.y, WHITE);
 
-            Vector2 mouse = GetMousePosition();
+            Vector2 mouse = GetGameMousePosition();
             Rectangle eggRect = {
                 eggs[i].position.x,
                 eggs[i].position.y,
@@ -96,7 +96,7 @@ void DrawEggs(Font shopFont)
 
 void DrawZoneArrows()
 {
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
 
     switch (currentZone)
     {
@@ -182,10 +182,8 @@ void DrawCurrentZone(Texture2D background, Animal animals[], int animalCount)
 
     case ZONE_ANIMALS:
     {
-          DrawAnimals(animals, animalCount);
-    UpdateEggs(GetFrameTime());
-    break;
-}
+          break;
+    }
 
     case ZONE_RELAX:
         DrawRelaxZone(relaxZoneTexture);
@@ -220,7 +218,7 @@ void DrawPlantZone(void)
         DrawTexture(plotTex, plots[i].bounds.x, plots[i].bounds.y, WHITE);
     }
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
 
     for (int i = 0; i < plotCount; i++)
     {
@@ -322,7 +320,7 @@ void DrawAnimalHUD(Animal animals[], int index, Texture2D feedIcon, int *foodSto
     float barX = animals[index].position.x;
     float barY = animals[index].position.y - 25;
 
-    Vector2 mousePos = GetMousePosition();
+    Vector2 mousePos = GetGameMousePosition();
     Rectangle animalRect = {
         animals[index].position.x,
         animals[index].position.y,
@@ -543,7 +541,7 @@ void DrawShop(bool *clickHandled,bool *shopOpen)
     if (!*shopOpen)
         return;
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
 
     DrawTexturePro(shopTexture, (Rectangle){0, 0, shopTexture.width, shopTexture.height}, (Rectangle){220, 100, 1500, 600}, (Vector2){0, 0}, 0.0f, WHITE);
 
@@ -571,7 +569,7 @@ void DrawShop(bool *clickHandled,bool *shopOpen)
 
 void DrawShopItem(ShopItemUI item, int x, int y, Font shopFont)
 {
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
 
     DrawRectangleRounded((Rectangle){x, y, 300, 420}, 0.1f, 10, RAYWHITE);
     DrawRectangleRoundedLines((Rectangle){x, y, 300, 420}, 0.1f, 10, LIGHTGRAY);
@@ -685,7 +683,7 @@ void DrawNotEnoughMoneyPopup(Font shopfont)
     DrawRectangleRec(closeButton, (Color){200, 0, 0, 255});
     DrawTextEx(shopfont, "X", (Vector2){1160, 415}, 24, 1, WHITE);
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
     if (CheckCollisionPointRec(mouse, closeButton) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
         showNotEnoughMoneyPopup = false;
@@ -704,7 +702,7 @@ void DrawInventory(bool *clickHandled, Font shopfont)
     if (!inventoryOpen)
         return;
 
-    Vector2 mouse = GetMousePosition();
+    Vector2 mouse = GetGameMousePosition();
     
     DrawTexturePro(shopTexture, (Rectangle){0, 0, shopTexture.width, shopTexture.height}, (Rectangle){220, 100, 1500, 600}, (Vector2){0, 0}, 0.0f, WHITE);
 
@@ -777,17 +775,31 @@ DrawTextEx(shopfont, quantityStr, (Vector2){x + 10, y + 330}, 30, 1, DARKGREEN);
 }
 }
 
-
 void CheckBarnClick(bool *clickHandled)
 {
-    Vector2 mouse = GetMousePosition();
+    if (currentZone != ZONE_MAIN)
+        return;
+
+    Vector2 mouse = GetGameMousePosition();
 
     Rectangle barnHitbox = {1200, 220, 700, 300};
 
-    if (!(*clickHandled) && CheckCollisionPointRec(mouse, barnHitbox) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    if (CheckCollisionPointRec(mouse, barnHitbox))
     {
-        inventoryOpen = true;
-        *clickHandled=true;
+        DrawTextEx(
+            shopfont,
+            "Hambar - Check your stocks!",
+            (Vector2){1250, 530},
+            30,
+            1,
+            WHITE
+        );
+
+        if (!(*clickHandled) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            inventoryOpen = true;
+            *clickHandled = true;
+        }
     }
 }
 
