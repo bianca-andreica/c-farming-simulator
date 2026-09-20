@@ -102,76 +102,87 @@ gcc -Wall -std=c99 -Iinclude src/main.c src/game.c src/render.c -o farming_game.
 
 ---
 
-## 🐧 Linux
+🐧 Linux
+Prerequisites
+Linux requires a local installation of raylib because the raylib library bundled in lib/ was built for Windows/MinGW and cannot be linked directly with Linux GCC.
 
-### Prerequisites
+These instructions are intended for Ubuntu/Debian-based systems.
 
-Linux requires a local installation of **raylib**, because the raylib library bundled in `lib/` was built for Windows/MinGW and cannot be linked directly with Linux GCC.
+1. Install the required development tools
+Update the package lists:
 
-Install the required development tools:
-
-```bash
 sudo apt update
-sudo apt install build-essential pkgconf
-```
+Install the compiler, build tools, pkg-config, Git, CMake, and the libraries required to build raylib:
 
-### Install raylib
+sudo apt install build-essential pkgconf git cmake libgl1-mesa-dev libx11-dev libxrandr-dev libxi-dev libxcursor-dev libxinerama-dev libxext-dev
+If Ubuntu asks for confirmation, enter:
 
-Install raylib and its dependencies according to your Linux distribution.
+Y
+2. Download raylib
+Go to your home directory:
 
-For Ubuntu/Debian-based systems, if raylib is not already available through the configured repositories, install/build raylib locally so that the system provides:
+cd ~
+Clone raylib:
 
-```bash
+git clone --depth 1 https://github.com/raysan5/raylib.git
+Enter the raylib directory:
+
+cd raylib
+3. Build raylib
+Create a separate build directory:
+
+mkdir build
+cd build
+Configure raylib with CMake:
+
+cmake -DBUILD_EXAMPLES=OFF -DBUILD_SHARED_LIBS=ON ..
+The BUILD_EXAMPLES=OFF option prevents the raylib example programs from being built. Only the raylib library is required by this project.
+
+Build raylib:
+
+make -j$(nproc)
+The build should finish with:
+
+[100%] Built target raylib
+4. Install raylib
+Install raylib into the system:
+
+sudo make install
+Then refresh the dynamic linker cache:
+
+sudo ldconfig
+5. Verify the raylib installation
+Check that pkg-config can find raylib:
+
 pkg-config --modversion raylib
-```
+This should print the installed raylib version.
 
-The project can then use the locally installed Linux raylib library.
+You can also check the compiler and linker flags:
 
-### Verify raylib
-
-Run:
-
-```bash
-pkg-config --modversion raylib
-```
-
-You should receive the installed raylib version.
-
-You can also check the compiler and linker flags with:
-
-```bash
 pkg-config --cflags --libs raylib
-```
+The command should return the include paths, library path, and libraries required to compile a raylib application.
 
-### Build
+6. Build the game
+Clone or download this project and enter its root directory.
 
+Then run:
+
+make
+If the build succeeds, the executable will be:
+
+farming_game
+7. Run the game
 From the project root:
 
-```bash
-make
-```
-
-### Run
-
-```bash
 ./farming_game
-```
-
-### Manual Linux Compilation
-
+Manual Linux Compilation
 If needed, the game can also be compiled directly with GCC:
 
-```bash
 gcc -Wall -std=c99 -Iinclude src/main.c src/game.c src/render.c -o farming_game $(pkg-config --cflags --libs raylib)
-```
+🔧 Linux Build Notes
+The project uses different raylib libraries depending on the operating system.
 
----
-
-## 🔧 Linux Build Notes
-
-The project uses different raylib libraries depending on the operating system:
-
-```text
+Windows
 Windows
    ↓
 Bundled raylib library
@@ -180,21 +191,20 @@ lib/libraylib.a
 MinGW/GCC
    ↓
 farming_game.exe
-
-
+Linux
 Linux
    ↓
-System/local raylib installation
+Local raylib installation
+/usr/local/lib/libraylib.so
+   ↓
+pkg-config
    ↓
 GCC
    ↓
 farming_game
-```
+The raylib library included in lib/ is intended for the Windows/MinGW build and should not be used for Linux builds.
 
-The Windows raylib library included in `lib/` should **not** be used for Linux builds because it is compiled for the Windows/MinGW environment.
-
----
-
+Linux builds use the locally installed Linux version of raylib through pkg-config.
 ## 🎮 Controls
 
 The game uses keyboard and mouse controls for navigation, farming, animal interaction, inventory management, and shop interaction.
