@@ -96,73 +96,74 @@ void DrawEggs(Font shopFont)
 
 void DrawZoneArrows()
 {
-    Vector2 mouse = GetGameMousePosition();
-
     switch (currentZone)
     {
         case ZONE_PLANTS:
-    
-        DrawTextureRec(arrowBack, (Rectangle){0, 0, arrowBack.width, arrowBack.height}, (Vector2){downArrowRect2.x, downArrowRect2.y}, WHITE);
-    
-        if (CheckCollisionPointRec(mouse, downArrowRect2))
-        {
-    
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            {
-                currentZone = ZONE_COUNT;
-            }
-        }
-        break;
-    
-    case ZONE_ANIMALS:
-        DrawTextureRec(arrowBackStanga, (Rectangle){0, 0, arrowBackStanga.width, arrowBackStanga.height}, (Vector2){downArrowRect3.x, downArrowRect3.y}, WHITE);
-    
-        if (CheckCollisionPointRec(mouse, downArrowRect3))
-        {
 
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            {
-                currentZone = ZONE_COUNT;
-            }
-        }
-        break;
-    case ZONE_RELAX:
-        DrawTextureRec(arrowBack, (Rectangle){0, 0, arrowBack.width, arrowBack.height}, (Vector2){downArrowRect1.x, downArrowRect1.y}, WHITE);
+            DrawTextureRec(
+                arrowBack,
+                (Rectangle){0, 0, arrowBack.width, arrowBack.height},
+                (Vector2){downArrowRect2.x, downArrowRect2.y},
+                WHITE
+            );
 
-        if (CheckCollisionPointRec(mouse, downArrowRect1))
-        {
+            break;
 
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-            {
-                currentZone = ZONE_COUNT;
-            }
-        }
-        break;
 
-    default:
+        case ZONE_ANIMALS:
 
-        DrawTextureRec(animalIcon, (Rectangle){0, 0, animalIcon.width, animalIcon.height}, (Vector2){rightArrowRect.x, rightArrowRect.y}, WHITE);
-        if (CheckCollisionPointRec(mouse, rightArrowRect))
-        {
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) currentZone = ZONE_ANIMALS;
-        }
+            DrawTextureRec(
+                arrowBackStanga,
+                (Rectangle){0, 0, arrowBackStanga.width, arrowBackStanga.height},
+                (Vector2){downArrowRect3.x, downArrowRect3.y},
+                WHITE
+            );
 
-        DrawTextureRec(plantIcon, (Rectangle){0, 0, plantIcon.width, plantIcon.height}, (Vector2){leftArrowRect.x, leftArrowRect.y}, WHITE);
-        if (CheckCollisionPointRec(mouse, leftArrowRect))
-        {
+            break;
 
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) currentZone = ZONE_PLANTS;
-        }
 
-        DrawTextureRec(relaxIcon, (Rectangle){0, 0, relaxIcon.width, relaxIcon.height}, (Vector2){upArrowRect.x, upArrowRect.y}, WHITE);
-        if (CheckCollisionPointRec(mouse, upArrowRect))
-        {
-            if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) currentZone = ZONE_RELAX;
-        }
-        break;
+        case ZONE_RELAX:
+
+            DrawTextureRec(
+                arrowBack,
+                (Rectangle){0, 0, arrowBack.width, arrowBack.height},
+                (Vector2){downArrowRect1.x, downArrowRect1.y},
+                WHITE
+            );
+
+            break;
+
+
+        case ZONE_MAIN:
+
+            DrawTextureRec(
+                animalIcon,
+                (Rectangle){0, 0, animalIcon.width, animalIcon.height},
+                (Vector2){rightArrowRect.x, rightArrowRect.y},
+                WHITE
+            );
+
+            DrawTextureRec(
+                plantIcon,
+                (Rectangle){0, 0, plantIcon.width, plantIcon.height},
+                (Vector2){leftArrowRect.x, leftArrowRect.y},
+                WHITE
+            );
+
+            DrawTextureRec(
+                relaxIcon,
+                (Rectangle){0, 0, relaxIcon.width, relaxIcon.height},
+                (Vector2){upArrowRect.x, upArrowRect.y},
+                WHITE
+            );
+
+            break;
+
+
+        case ZONE_COUNT:
+            break;
     }
 }
-
 
 void DrawCurrentZone(Texture2D background, Animal animals[], int animalCount)
 {
@@ -273,13 +274,6 @@ DrawTexture(
     toolStorageTex,
     GAME_WIDTH - 400,
     100,
-    WHITE
-);
-
-DrawTexture(
-    waterTowerTex,
-    towerPos.x,
-    towerPos.y,
     WHITE
 );
     Rectangle waterTowerRect = { towerPos.x, towerPos.y, waterTowerTex.width, waterTowerTex.height };
@@ -854,7 +848,12 @@ void CheckBarnClick(bool *clickHandled)
 
     Vector2 mouse = GetGameMousePosition();
 
-    Rectangle barnHitbox = {1200, 220, 700, 300};
+    Rectangle barnHitbox = {
+        1200,
+        220,
+        700,
+        300
+    };
 
     if (CheckCollisionPointRec(mouse, barnHitbox))
     {
@@ -867,14 +866,14 @@ void CheckBarnClick(bool *clickHandled)
             WHITE
         );
 
-        if (!(*clickHandled) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        if (!(*clickHandled) &&
+            IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             inventoryOpen = true;
             *clickHandled = true;
         }
     }
 }
-
 void SaveGame(const char* filename, int money, int energy, int food,
               Pen pens[], int penCount,
               Plot plots[], int plotCount) {

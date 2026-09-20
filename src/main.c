@@ -62,117 +62,199 @@ int main()
     InitGame(&farmer, plants, &plantCount, animals, &animalCount);
 
     while (true)
+{
+    if (WindowShouldClose())
     {
-       
-        if (WindowShouldClose()) 
-        {
-        SaveGame("savegame.dat", money, energy, foodStock, pens, PEN_COUNT, plots, plotCount);
-        break; 
-        }
-        BeginTextureMode(gameTarget);
+        SaveGame(
+            "savegame.dat",
+            money,
+            energy,
+            foodStock,
+            pens,
+            PEN_COUNT,
+            plots,
+            plotCount
+        );
+        break;
+    }
 
-        ClearBackground(RAYWHITE);
-        
-        Texture2D currentBackground;
-        switch (currentZone)
-        {
+    float deltaTime = GetFrameTime();
+
+    // ==========================================
+    // 1. UPDATE LOGIC
+    // ==========================================
+
+    if (IsKeyPressed(KEY_R))
+    {
+        ResetGame(
+            &money,
+            &energy,
+            animals,
+            &animalCount,
+            pens,
+            PEN_COUNT
+        );
+    }
+
+    UpdateGame(
+        &farmer,
+        plants,
+        &plantCount,
+        animals,
+        &animalCount,
+        plots,
+        plotCount
+    );
+
+    UpdateAnimals(
+        deltaTime,
+        animals,
+        animalCount
+    );
+
+    if (currentZone == ZONE_ANIMALS)
+    {
+        UpdateEggs(deltaTime);
+    }
+
+    // ==========================================
+    // 2. DRAW
+    // ==========================================
+
+    BeginTextureMode(gameTarget);
+
+    ClearBackground(RAYWHITE);
+
+    Texture2D currentBackground;
+
+    switch (currentZone)
+    {
         case ZONE_PLANTS:
             currentBackground = plantZoneBackground;
             break;
+
         case ZONE_ANIMALS:
             currentBackground = animalZoneBackground;
             break;
+
         case ZONE_RELAX:
             currentBackground = relaxZoneTexture;
             break;
+
         default:
             currentBackground = mainZoneBackground;
-        }
-
-        DrawCurrentZone(currentBackground, animals, animalCount);
-     if (IsKeyPressed(KEY_R)) 
-     {
-        ResetGame(&money, &energy,animals, &animalCount, pens, PEN_COUNT);
-     }
-        
-        UpdateGame(&farmer, plants, &plantCount, animals, &animalCount, plots, plotCount);
-        float deltaTime = GetFrameTime();
-
-
-        UpdateAnimals(deltaTime, animals, animalCount);
-        if (currentZone == ZONE_ANIMALS)
-	{
-   		 UpdateEggs(deltaTime);
-    		 DrawEggs(shopfont);
-	}
-
-        
-        if (currentZone != ZONE_RELAX)
-        {
-            DrawFarmer(&farmer);
-        }
-
-        
-        DrawAnimals(animals, animalCount);
-      
-       
-        DrawShopButton();
-
-        DrawHUD(foodStock, energy, money);
-
-    
-        if (CheckCollisionPointRec(GetGameMousePosition(), shopButtonRect) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
-	{
-   		 shopOpen = !shopOpen; 
-	}
-        bool clickHandled = false;
-        DrawShop(&clickHandled,&shopOpen);
-        CheckBarnClick(&clickHandled);
-        DrawNotEnoughMoneyPopup(shopfont);
-
-        if (inventoryOpen)
-        {
-            DrawInventory(&clickHandled, shopfont);
-        }
-
-        EndTextureMode();
-
-BeginDrawing();
-
-ClearBackground(BLACK);
-
-float scaleX = (float)GetScreenWidth() / GAME_WIDTH;
-float scaleY = (float)GetScreenHeight() / GAME_HEIGHT;
-
-float scale = scaleX < scaleY ? scaleX : scaleY;
-
-float destWidth = GAME_WIDTH * scale;
-float destHeight = GAME_HEIGHT * scale;
-
-float destX = (GetScreenWidth() - destWidth) / 2.0f;
-float destY = (GetScreenHeight() - destHeight) / 2.0f;
-
-DrawTexturePro(
-    gameTarget.texture,
-    (Rectangle){
-        0,
-        0,
-        (float)gameTarget.texture.width,
-        -(float)gameTarget.texture.height
-    },
-    (Rectangle){
-        destX,
-        destY,
-        destWidth,
-        destHeight
-    },
-    (Vector2){0, 0},
-    0.0f,
-    WHITE
-);
-
-EndDrawing();
+            break;
     }
+
+    // Fundalul este desenat DUPA ce zona a fost schimbata
+    DrawCurrentZone(
+        currentBackground,
+        animals,
+        animalCount
+    );
+
+    // Fermier
+    if (currentZone != ZONE_RELAX)
+    {
+        DrawFarmer(&farmer);
+    }
+
+    // Animalele
+    DrawAnimals(
+        animals,
+        animalCount
+    );
+
+    // Ouale - DUPA animale
+    if (currentZone == ZONE_ANIMALS)
+    {
+        DrawEggs(shopfont);
+    }
+
+    // Shop
+    DrawShopButton();
+
+    // HUD
+    DrawHUD(
+        foodStock,
+        energy,
+        money
+    );
+
+    // Click shop
+    if (CheckCollisionPointRec(
+            GetGameMousePosition(),
+            shopButtonRect
+        ) &&
+        IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    {
+        shopOpen = !shopOpen;
+    }
+
+    bool clickHandled = false;
+
+    DrawShop(
+        &clickHandled,
+        &shopOpen
+    );
+
+    CheckBarnClick(
+        &clickHandled
+    );
+
+    DrawNotEnoughMoneyPopup(shopfont);
+
+    if (inventoryOpen)
+    {
+        DrawInventory(
+            &clickHandled,
+            shopfont
+        );
+    }
+
+    EndTextureMode();
+
+
+    // ==========================================
+    // 3. DISPLAY FINAL
+    // ==========================================
+
+    BeginDrawing();
+
+    ClearBackground(BLACK);
+
+    float scaleX = (float)GetScreenWidth() / GAME_WIDTH;
+    float scaleY = (float)GetScreenHeight() / GAME_HEIGHT;
+
+    float scale = scaleX < scaleY ? scaleX : scaleY;
+
+    float destWidth = GAME_WIDTH * scale;
+    float destHeight = GAME_HEIGHT * scale;
+
+    float destX = (GetScreenWidth() - destWidth) / 2.0f;
+    float destY = (GetScreenHeight() - destHeight) / 2.0f;
+
+    DrawTexturePro(
+        gameTarget.texture,
+        (Rectangle){
+            0,
+            0,
+            (float)gameTarget.texture.width,
+            -(float)gameTarget.texture.height
+        },
+        (Rectangle){
+            destX,
+            destY,
+            destWidth,
+            destHeight
+        },
+        (Vector2){0, 0},
+        0.0f,
+        WHITE
+    );
+
+    EndDrawing();
+}
     UnloadGame(&farmer, plants, plantCount, animals, animalCount);
     UnloadTexture(plantZoneBackground);
     UnloadTexture(animalZoneBackground);

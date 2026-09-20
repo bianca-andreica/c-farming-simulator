@@ -254,22 +254,36 @@ void UpdatePlantGrowth(Plot plots[], int plotCount, float deltaTime)
 }
 
 
-void UpdateGame(Farmer *farmer, Plant plants[], int *plantCount, Animal animals[], int *animalCount,Plot plots[], int plotCount)
+void UpdateGame(Farmer *farmer, Plant plants[], int *plantCount,
+                Animal animals[], int *animalCount,
+                Plot plots[], int plotCount)
 {
+    (void)plants;
+    (void)plantCount;
+    (void)animals;
+    (void)animalCount;
+
+    // Viteza fermierului în pixeli/secundă
+    float moveSpeed = 300.0f;
+    float deltaTime = GetFrameTime();
+
     if (IsKeyDown(KEY_RIGHT))
-        farmer->position.x += 2;
+        farmer->position.x += moveSpeed * deltaTime;
+
     if (IsKeyDown(KEY_LEFT))
-        farmer->position.x -= 2;
+        farmer->position.x -= moveSpeed * deltaTime;
+
     if (IsKeyDown(KEY_DOWN))
-        farmer->position.y += 2;
+        farmer->position.y += moveSpeed * deltaTime;
+
     if (IsKeyDown(KEY_UP))
-        farmer->position.y -= 2;
+        farmer->position.y -= moveSpeed * deltaTime;
 
     Vector2 mouse = GetGameMousePosition();
 
+    // Navigarea între zone se face AICI, o singură dată
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
-        
         if (currentZone == ZONE_MAIN)
         {
             if (CheckCollisionPointRec(mouse, leftArrowRect))
@@ -285,42 +299,40 @@ void UpdateGame(Farmer *farmer, Plant plants[], int *plantCount, Animal animals[
                 ChangeZone(ZONE_RELAX);
             }
         }
-        else if ((currentZone == ZONE_RELAX && CheckCollisionPointRec(mouse, downArrowRect1)) ||
-         (currentZone == ZONE_PLANTS && CheckCollisionPointRec(mouse, downArrowRect2)) ||
-         (currentZone == ZONE_ANIMALS && CheckCollisionPointRec(mouse, downArrowRect3)))
-{
-    ChangeZone(ZONE_MAIN);
-}
-
+        else if (currentZone == ZONE_RELAX &&
+                 CheckCollisionPointRec(mouse, downArrowRect1))
+        {
+            ChangeZone(ZONE_MAIN);
+        }
+        else if (currentZone == ZONE_PLANTS &&
+                 CheckCollisionPointRec(mouse, downArrowRect2))
+        {
+            ChangeZone(ZONE_MAIN);
+        }
+        else if (currentZone == ZONE_ANIMALS &&
+                 CheckCollisionPointRec(mouse, downArrowRect3))
+        {
+            ChangeZone(ZONE_MAIN);
+        }
     }
 
     switch (currentZone)
     {
-    case ZONE_PLANTS:
-        UpdatePlantGrowth(plots, plotCount, GetFrameTime());
-        HandlePlotPlanting(plots, plotCount);
-        break;
+        case ZONE_PLANTS:
+            UpdatePlantGrowth(plots, plotCount, deltaTime);
+            HandlePlotPlanting(plots, plotCount);
+            break;
 
-    case ZONE_ANIMALS:
-        UpdateEggs(GetFrameTime());
-        DrawAnimals(animals, *animalCount);
-        break;
+        case ZONE_RELAX:
+            RechargeEnergy(farmer, deltaTime);
+            break;
 
-    case ZONE_RELAX:
-        RechargeEnergy(farmer, GetFrameTime());
-        break;
-
-    case ZONE_MAIN:
-        
-        break;
-
-    case ZONE_COUNT:
-        
-        break;
+        case ZONE_ANIMALS:
+        case ZONE_MAIN:
+        case ZONE_COUNT:
+            break;
     }
-    UpdateAnimals(GetFrameTime(), animals, *animalCount);
 }
-
 
 void UnloadGame(Farmer *farmer, Plant plants[], int plantCount, Animal animals[], int animalCount)
 {
@@ -761,7 +773,10 @@ void UpdateAnimals(float deltaTime, Animal animals[], int animalCount)
             if (animals[i].eggLayTimer <= 0 && eggCount < MAX_EGGS)
             {
                 eggs[eggCount++] = (Egg){
-                    .position = {animals[i].position.x + 20, animals[i].position.y + 20},
+                        .position = {
+                        animals[i].position.x + animals[i].texture.width - 5,
+                        animals[i].position.y + animals[i].texture.height - 10
+                    },
                     .texture = eggTexture,
                     .freshness = 24.0f,
                     .collected = false,
@@ -821,21 +836,21 @@ void FeedAnimal(int animalIndex, int *foodStock, Animal animals[])
         animals[animalIndex].isHungry = false;
         (*foodStock)--;
     }
-    if (animals[animalIndex].canLayEggs && eggCount < MAX_EGGS)
-        {
-            eggs[eggCount++] = (Egg){
-                .position = {
-                animals[animalIndex].position.x + 70,
-                animals[animalIndex].position.y + 80
-                },
 
-                .texture = eggTexture,
-                .freshness = 24.0f,
-                .collected = false,
-                .textTimer = 0,
-                .showText = false
-            };
-        }
+    if (animals[animalIndex].canLayEggs && eggCount < MAX_EGGS)
+    {
+        eggs[eggCount++] = (Egg){
+            .position = {
+                animals[animalIndex].position.x + animals[animalIndex].texture.width - 10,
+                animals[animalIndex].position.y + animals[animalIndex].texture.height - 10
+            },
+            .texture = eggTexture,
+            .freshness = 24.0f,
+            .collected = false,
+            .textTimer = 0,
+            .showText = false
+        };
+    }
 }
 
 void SellAnimal(int index, Animal animals[])
