@@ -11,12 +11,44 @@ A modular 2D farming simulation game built from scratch in pure **C** using the 
 
 ## 🎮 Gameplay & World Zones
 
-The game environment is split into 4 distinct functional zones, alongside an active in-game economy:
+The game environment is divided into 4 functional zones, each with its own gameplay mechanics and progression systems.
 
-* 🏡 **Home & Rest Zone:** A designated area where the player can rest to restore energy levels required for daily farm tasks.
-* 🌱 **Crop Farming Zone:** Plant crops and monitor real-time growth. Interact with the **Water Tower** to irrigate crops and speed up growth cycles.
-* 🐔 **Livestock Zone:** Care for farm animals by feeding them and maintaining clean animal pens.
-* 🛒 **In-Game Shop:** Purchase animal food, seeds, and water refills using earned farm currency.
+### 🏡 Home & Rest Zone
+
+The player can return home and rest to restore the energy required for daily activities.
+
+### 🌱 Crop Farming Zone
+
+The player can purchase and plant crops using in-game currency.
+
+After planting, each crop takes a certain amount of time to grow and produces a randomly selected plant.
+
+Once the crop is ready, the player must collect it to receive money.
+
+The player can interact with the **Water Tower** to water the crop and accelerate its growth.
+
+If a fully grown crop is not collected within the required time, it disappears and the player receives no money from that crop.
+
+This creates a simple risk/reward system where the player must manage both time and resources.
+
+### 🐔 Livestock Zone
+
+The player can purchase and care for farm animals by providing them with food.
+
+After being fed, chickens and ducks can produce eggs that the player must collect.
+
+Animals also have a limited lifespan. When an animal becomes old, the player can sell it and receive money.
+
+After an animal is sold, a new animal can eventually appear in its place, allowing the livestock system to continue throughout the game.
+
+### 🛒 In-Game Shop
+
+The shop is used to purchase resources required for farm progression, including:
+
+* Animal food
+* Water refills
+
+Money earned from crops, eggs, and livestock sales can be spent on further farm activities.
 
 ---
 
