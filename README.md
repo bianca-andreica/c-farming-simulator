@@ -13,9 +13,13 @@ A modular 2D farming simulation game built from scratch in pure **C** using the 
 
 The game environment is divided into 4 functional zones, each with its own gameplay mechanics and progression systems.
 
-### 🏡 Home & Rest Zone
+### 🏡 Home Zone
 
-The player can return home and rest to restore the energy required for daily activities.
+The player can access the barn to open the inventory and manage their farming resources.
+
+### 🌿 Rest & Relaxation Zone
+
+The player can visit a peaceful lake area to restore energy required for daily farming activities.
 
 ### 🌱 Crop Farming Zone
 
