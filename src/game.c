@@ -504,7 +504,7 @@ img = LoadImage("assets/seeds/cabbage.png"); ImageResize(&img, 450, 450); plantT
     collectIcon = LoadTextureFromImage(collectIconImg);
     UnloadImage(collectIconImg);
 
-    Image woodImage = LoadImage("assets/wood_textures.PNG");
+    Image woodImage = LoadImage("assets/textures/wood_textures.png");
     ImageResize(&woodImage, 180, 40);
     woodPanelTexture = LoadTextureFromImage(woodImage);
     UnloadImage(woodImage);
@@ -528,7 +528,7 @@ img = LoadImage("assets/seeds/cabbage.png"); ImageResize(&img, 450, 450); plantT
     UnloadImage(shopIconImage);
     relaxZoneTexture = LoadTexture("assets/backgrounds/background_relax.png");
 
-    Image shopBackgroundImage = LoadImage("assets/textures/wood_textures.PNG");
+    Image shopBackgroundImage = LoadImage("assets/textures/wood_textures.png");
     if (shopBackgroundImage.data == NULL)
     {
         printf("Error: Could not load shop background image\n");

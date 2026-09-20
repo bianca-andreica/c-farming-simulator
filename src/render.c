@@ -168,49 +168,56 @@ void DrawCurrentZone(Texture2D background, Animal animals[], int animalCount)
 {
     DrawTexturePro(
         background,
-        (Rectangle){0, 0, background.width, background.height},
-        (Rectangle){0, 0, GetScreenWidth(), GetScreenHeight()},
+        (Rectangle){0, 0, (float)background.width, (float)background.height},
+        (Rectangle){0, 0, GAME_WIDTH, GAME_HEIGHT},
         (Vector2){0, 0},
         0.0f,
         WHITE);
 
     switch (currentZone)
     {
-    case ZONE_PLANTS:
-        DrawPlantZone();
-        break;
+        case ZONE_PLANTS:
+            DrawPlantZone();
+            break;
 
-    case ZONE_ANIMALS:
-    {
-          break;
-    }
+        case ZONE_ANIMALS:
+            break;
 
-    case ZONE_RELAX:
-        DrawRelaxZone(relaxZoneTexture);
-        break;
+        case ZONE_RELAX:
+            DrawRelaxZone(relaxZoneTexture);
+            break;
 
-    case ZONE_MAIN:
-       
-                Color brightRed = (Color){255, 60, 60, 255};
+        case ZONE_MAIN:
+        {
+            Color brightRed = (Color){255, 60, 60, 255};
 
-        DrawTextEx(shopfont, "My Farm",
-                (Vector2){GetScreenWidth() / 2 - 100, 50},
-                80, 2, brightRed);
+            DrawTextEx(
+                shopfont,
+                "My Farm",
+                (Vector2){GAME_WIDTH / 2 - 100, 50},
+                80,
+                2,
+                brightRed
+            );
 
-        DrawTextEx(shopfont, "Use the arrows to visit different areas of your farm",
-                (Vector2){GetScreenWidth() / 2 -350, 130},
-                40, 1, brightRed);
+            DrawTextEx(
+                shopfont,
+                "Use the arrows to visit different areas of your farm",
+                (Vector2){GAME_WIDTH / 2 - 350, 130},
+                40,
+                1,
+                brightRed
+            );
+            break;
+        }
 
-        break;
-
-    case ZONE_COUNT:
-    
-        break;
+        case ZONE_COUNT:
+            break;
     }
 
     DrawZoneArrows();
 }
-
+        
 void DrawPlantZone(void)
 {
     for (int i = 0; i < plotCount; i++)
@@ -260,9 +267,21 @@ void DrawPlantZone(void)
         }
 
     }
-    DrawTexture(waterTowerTex, GetScreenWidth() - 1000, 300, WHITE);
-    DrawTexture(toolStorageTex, GetScreenWidth() - 400, 100, WHITE);
-    Vector2 towerPos = { GetScreenWidth() - 1000, 300 };
+    Vector2 towerPos = { GAME_WIDTH - 1000, 300 };
+
+DrawTexture(
+    toolStorageTex,
+    GAME_WIDTH - 400,
+    100,
+    WHITE
+);
+
+DrawTexture(
+    waterTowerTex,
+    towerPos.x,
+    towerPos.y,
+    WHITE
+);
     Rectangle waterTowerRect = { towerPos.x, towerPos.y, waterTowerTex.width, waterTowerTex.height };
     DrawTexture(waterTowerTex, towerPos.x, towerPos.y, WHITE);
 
@@ -287,26 +306,67 @@ void DrawPlantZone(void)
 
 void DrawRelaxZone(Texture2D background)
 {
+    DrawTextEx(
+        shopfont,
+        "Relaxation Zone",
+        (Vector2){GAME_WIDTH / 2 - 140, 90},
+        50,
+        1,
+        GREEN
+    );
 
-        DrawTextEx(shopfont, "Relaxation Zone", (Vector2){GetScreenWidth() / 2 - 140, 90}, 50, 1, GREEN);
-        DrawTextEx(shopfont, "Recharging Energy...", (Vector2){GetScreenWidth() / 2 - 110, 150}, 40, 1, YELLOW);
+    DrawTextEx(
+        shopfont,
+        "Recharging Energy...",
+        (Vector2){GAME_WIDTH / 2 - 110, 150},
+        40,
+        1,
+        YELLOW
+    );
 
+    Rectangle barBg = {
+        GAME_WIDTH / 2 - 150,
+        230,
+        300,
+        30
+    };
 
-        Rectangle barBg = {GetScreenWidth() / 2 - 150, 230, 300, 30};
-        float rechargeProgress = (float)energy / 100.0f;
+    float rechargeProgress = (float)energy / 100.0f;
 
+    DrawRectangleRounded(
+        barBg,
+        0.5f,
+        8,
+        (Color){30, 30, 30, 200}
+    );
 
-        DrawRectangleRounded(barBg, 0.5f, 8, (Color){30, 30, 30, 200});
+    DrawRectangleRounded(
+        (Rectangle){
+            barBg.x,
+            barBg.y,
+            barBg.width * rechargeProgress,
+            barBg.height
+        },
+        0.5f,
+        8,
+        (Color){0, 255, 128, 200}
+    );
 
-        DrawRectangleRounded((Rectangle){barBg.x, barBg.y, barBg.width * rechargeProgress, barBg.height},0.5f, 8, (Color){0, 255, 128, 200});
+    DrawRectangleRoundedLines(
+        barBg,
+        0.5f,
+        8,
+        WHITE
+    );
 
-
-        DrawRectangleRoundedLines(barBg, 0.5f, 8, WHITE);
-
-
-        DrawTextEx(shopfont, TextFormat("Energy: %d%%", energy),(Vector2){GetScreenWidth() / 2 - 60, 235}, 20, 1, WHITE);
-
-
+    DrawTextEx(
+        shopfont,
+        TextFormat("Energy: %d%%", energy),
+        (Vector2){GAME_WIDTH / 2 - 60, 235},
+        20,
+        1,
+        WHITE
+    );
 }
 
 
@@ -516,10 +576,22 @@ void DrawHUD(int foodStock, int energy, int money)
     sprintf(levelText, "Nivel %d", gameLevel);
 
 
-     Rectangle levelPanel = {1700, 15, 170, 40};
+     Rectangle levelPanel = {
+    GAME_WIDTH - 220,
+    15,
+    170,
+    40
+};
     DrawTexturePro(shopTexture,(Rectangle){0, 0, shopTexture.width, shopTexture.height},levelPanel,(Vector2){0, 0},0.0f,WHITE);
     Color playfulYellow = (Color){255, 223, 50, 255}; 
-    DrawTextEx(shopfont, levelText, (Vector2){1720, 20}, 28, 2, playfulYellow);
+    DrawTextEx(
+    shopfont,
+    levelText,
+    (Vector2){GAME_WIDTH - 200, 20},
+    28,
+    2,
+    playfulYellow
+);
 
 
     DrawNotEnoughEnergyPopup(shopfont);

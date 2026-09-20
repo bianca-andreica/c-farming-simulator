@@ -20,6 +20,26 @@ The game environment is split into 4 distinct functional zones, alongside an act
 
 ---
 
+## 📸 Gameplay Screenshots
+
+The following screenshots showcase the main gameplay areas and interactive systems of the farming simulation.
+
+### 🌍 Main World Overview
+
+![Main World Overview](screenshots/main-area.png)
+
+### 🐔 Livestock Zone
+
+![Livestock Zone](screenshots/animals-area.png)
+
+### 🌱 Crop Farming Zone
+
+![Crop Farming Zone](screenshots/crops-area.png)
+
+### 🏡 Home & Rest Zone
+
+![Home & Rest Zone](screenshots/rest-area.png)
+
 ## 🛠️ Technical Highlights & Architecture
 
 * **Pure C Memory & State Management:** Game states, inventory limits, and energy loops are implemented using C data structures and explicit state management.
