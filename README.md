@@ -78,6 +78,20 @@ The following screenshots showcase the main gameplay areas and interactive syste
 
 The Windows build uses the raylib libraries bundled with the project.
 
+### Clone the project
+
+Open Git Bash or PowerShell and run:
+
+```bash
+git clone https://github.com/bianca-andreica/c-farming-simulator.git
+```
+
+Enter the project directory:
+
+```bash
+cd c-farming-simulator
+```
+
 ### Build
 
 From the project root:
@@ -213,7 +227,23 @@ The command should return the include paths, library path, and libraries require
 
 ### 6. Build the game
 
-Clone or download this project and enter its root directory.
+From your home directory:
+
+```bash
+cd ~
+```
+
+Clone the repository:
+
+```bash
+git clone https://github.com/bianca-andreica/c-farming-simulator.git
+```
+
+Enter the project directory:
+
+```bash
+cd c-farming-simulator
+```
 
 Then run:
 
